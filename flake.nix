@@ -1,10 +1,16 @@
 {
-  description = "My Dotfiles";
+  description = "Cthyllaxy NixOS Hosts";
 
   nixConfig = {
-    extra-substituters = ["https://nix-community.cachix.org"];
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+      "https://hyprland.cachix.org"
+      "https://ghostty.cachix.org"
+    ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
     ];
   };
 
@@ -26,7 +32,6 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nvf.url = "github:notashelf/nvf";
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
     hyprland.url = "github:hyprwm/Hyprland";
   };
@@ -82,12 +87,6 @@
       kassogtha = libx.mkHost {hostName = "kassogtha";};
       zoth-ommog = libx.mkHost {hostName = "zoth-ommog";};
       ythogtha = libx.mkHost {hostName = "ythogtha";};
-    };
-
-    homeConfigurations = {
-      "thamenato@zoth-ommog" = libx.mkHome {hostName = "zoth-ommog";};
-      "thamenato@kassogtha" = libx.mkHome {hostName = "kassogtha";};
-      "thamenato@ythogtha" = libx.mkHome {hostName = "ythogtha";};
     };
   };
 }

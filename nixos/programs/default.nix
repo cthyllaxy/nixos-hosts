@@ -10,7 +10,7 @@
       enable = true;
       clean.enable = true;
       clean.extraArgs = "--keep-since 4d --keep 3";
-      flake = "/home/$USER/dotfiles";
+      # flake = "/home/$USER/dotfiles";
     };
 
     dconf.enable = true;
