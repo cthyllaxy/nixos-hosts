@@ -48,8 +48,38 @@
       config.allowUnfree = true;
     };
 
-    # Import helper functions
-    libx = import ./lib {inherit self inputs;};
+    hmPkgsConfig = {
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        backupFileExtension = "bak";
+      };
+    };
+
+    mkHost = {
+      hostName,
+      user ? "thamenato",
+    }: (inputs.nixpkgs.lib.nixosSystem {
+      inherit system;
+
+      specialArgs = {
+        inherit inputs;
+        meta = {
+          inherit hostName;
+          inherit user;
+        };
+      };
+
+      modules = [
+        inputs.auto-cpufreq.nixosModules.default
+        inputs.home-manager.nixosModules.home-manager
+        inputs.disko.nixosModules.disko
+        inputs.sops-nix.nixosModules.sops
+        hmPkgsConfig
+        ./nixos
+        ./hosts/${hostName}/configuration.nix
+      ];
+    });
   in {
     checks = {
       pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
@@ -84,9 +114,9 @@
     };
 
     nixosConfigurations = {
-      kassogtha = libx.mkHost {hostName = "kassogtha";};
-      zoth-ommog = libx.mkHost {hostName = "zoth-ommog";};
-      ythogtha = libx.mkHost {hostName = "ythogtha";};
+      kassogtha = mkHost {hostName = "kassogtha";};
+      zoth-ommog = mkHost {hostName = "zoth-ommog";};
+      ythogtha = mkHost {hostName = "ythogtha";};
     };
   };
 }
