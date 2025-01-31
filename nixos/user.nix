@@ -1,49 +1,51 @@
 {
-  meta,
   pkgs,
   config,
   lib,
   ...
 }: let
   cfg = config.nixosModules.users;
+
+  mkUser = username: {
+    isNormalUser = true;
+    description = "${username}";
+    hashedPasswordFile = config.sops.secrets.${username}.path;
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "lp"
+      "scanner"
+    ];
+  };
 in {
   options.nixosModules.users = {
-    natalie.enable = lib.mkEnableOption "Enable Natalie user";
+    usernames = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      description = "list of usernames to be created";
+    };
   };
   config = {
-    sops.secrets = {
-      # user passwords
-      ${meta.user}.neededForUsers = true;
-      nmeusling.neededForUsers = lib.mkIf cfg.natalie.enable true;
-    };
+    sops.secrets = builtins.listToAttrs (
+      map (username: {
+        name = username;
+        value = {
+          neededForUsers = true;
+        };
+      })
+      cfg.usernames
+    );
 
     users = {
-      users = {
-        ${meta.user} = {
-          isNormalUser = true;
-          description = "Thales Menato";
-          hashedPasswordFile = config.sops.secrets.${meta.user}.path;
-          extraGroups = [
-            "networkmanager"
-            "wheel"
-            "lp"
-            "scanner"
-          ];
-        };
-        nmeusling = lib.mkIf cfg.natalie.enable {
-          isNormalUser = true;
-          description = "Natalie Menato";
-          hashedPasswordFile = config.sops.secrets.nmeusling.path;
-          extraGroups = [
-            "networkmanager"
-            "wheel"
-          ];
-        };
-      };
-      extraGroups.docker.members = [
-        meta.user
-        (lib.mkIf cfg.natalie.enable "nmeusling")
-      ];
+      users = builtins.listToAttrs (
+        map (username: {
+          name = username;
+          value = mkUser username;
+        })
+        cfg.usernames
+      );
+
+      extraGroups.docker.members = cfg.usernames;
+
       defaultUserShell = pkgs.zsh;
     };
   };

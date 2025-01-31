@@ -8,7 +8,10 @@
   environment.systemPackages = with pkgs; [gparted];
 
   # my nixos modules
-  nixosModules.steam.enable = true;
+  nixosModules = {
+    users.usernames = ["thamenato"];
+    steam.enable = true;
+  };
 
   system.stateVersion = "24.05";
 }
