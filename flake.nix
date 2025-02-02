@@ -117,6 +117,7 @@
       kassogtha = mkHost {hostName = "kassogtha";};
       zoth-ommog = mkHost {hostName = "zoth-ommog";};
       ythogtha = mkHost {hostName = "ythogtha";};
+      cthylla = mkHost {hostName = "cthylla";};
     };
   };
 }
