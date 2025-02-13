@@ -52,7 +52,7 @@
 
   # nixos modules
   nixosModules = {
-    users.natalie.enable = true;
+    users.usernames = ["thamenato" "nmeusling"];
     steam = {
       enable = true;
       gamescope = true;
