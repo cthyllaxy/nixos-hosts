@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     # tools/cli
-    bitwarden-cli
+    # bitwarden-cli
     cachix
     curl
     dig
