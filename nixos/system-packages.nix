@@ -28,7 +28,7 @@
     easyeffects
     evince
     pwvucontrol
-    signal-desktop
+    signal-desktop-bin
     simple-scan
     slack
     spotify

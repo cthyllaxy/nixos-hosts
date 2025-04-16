@@ -72,8 +72,8 @@
 
       modules = [
         inputs.auto-cpufreq.nixosModules.default
-        inputs.home-manager.nixosModules.home-manager
         inputs.disko.nixosModules.disko
+        inputs.home-manager.nixosModules.home-manager
         inputs.sops-nix.nixosModules.sops
         hmPkgsConfig
         ./nixos

@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   nix = {
-    # package = pkgs.nixVersions.latest;
     package = pkgs.lix;
     settings = {
       experimental-features = [
@@ -27,6 +26,6 @@
         "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
       ];
     };
-    optimise.automatic = true;
+    # optimise.automatic = true;
   };
 }
