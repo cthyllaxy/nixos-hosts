@@ -43,5 +43,8 @@
         gnome.enable = true;
       };
     };
+
+    # Firmware updater
+    fwupd.enable = true;
   };
 }
