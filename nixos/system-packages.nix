@@ -32,7 +32,7 @@
     simple-scan
     slack
     spotify
-    ventoy
+    # ventoy
     vlc
     xfce.thunar
     # xwaylandvideobridge
