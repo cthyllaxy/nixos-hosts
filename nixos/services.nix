@@ -34,14 +34,9 @@
         enable = true;
       };
     };
-    # Enable the windowing system.
-    xserver = {
-      enable = true;
 
-      # displayManager.gdm.enable = true;
-      desktopManager = {
-        gnome.enable = true;
-      };
+    desktopManager = {
+      gnome.enable = true;
     };
 
     # Firmware updater
