@@ -2,13 +2,13 @@
   environment.systemPackages = with pkgs; [
     # tools/cli
     # bitwarden-cli
-    cachix
     curl
     dig
     gnupg
     htop
     lf
     neovim
+    nh
     pulseaudio
     unixtools.xxd
     wget
@@ -30,17 +30,16 @@
     pwvucontrol
     signal-desktop-bin
     simple-scan
-    slack
+    # slack
     spotify
     # ventoy
     vlc
     xfce.thunar
     # xwaylandvideobridge
-    yubikey-manager
+    # yubikey-manager
 
     # browser
     firefox
-    google-chrome
 
     # hyprland dependencies
     hyprpolkitagent
