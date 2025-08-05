@@ -1,5 +1,7 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; let
+    nh-update = pkgs.callPackage ../packages/nh-update {};
+  in [
     # tools/cli
     # bitwarden-cli
     curl
@@ -12,6 +14,7 @@
     pulseaudio
     unixtools.xxd
     wget
+    nh-update
 
     # programming
     git
