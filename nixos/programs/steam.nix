@@ -20,6 +20,9 @@ in {
         "120"
         "--hdr-enabled"
         "--rt"
+        # hotfix
+        "--backend"
+        "sdl"
       ];
       description = "Gamescope args";
     };
@@ -40,10 +43,11 @@ in {
               (lib.getLib openal)
             ];
         };
+
         extraCompatPackages = with pkgs; [
           freetype
+          libdecor
           gamescope-wsi
-          # openal
           proton-ge-bin
           vkd3d
           vkd3d-proton
