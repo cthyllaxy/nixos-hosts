@@ -20,9 +20,8 @@ in {
         "120"
         "--hdr-enabled"
         "--rt"
-        # hotfix
-        "--backend"
-        "sdl"
+        # "--backend"
+        # "vulkan"
       ];
       description = "Gamescope args";
     };
@@ -36,23 +35,22 @@ in {
         dedicatedServer.openFirewall = true;
         localNetworkGameTransfers.openFirewall = true;
 
-        package = pkgs.steam.override {
-          extraLibraries = p:
-            with p; [
-              (lib.getLib networkmanager)
-              (lib.getLib openal)
-            ];
-        };
+        # package = pkgs.steam.override {
+        #   extraLibraries = p:
+        #     with p; [
+        #       (lib.getLib networkmanager)
+        #       (lib.getLib openal)
+        #     ];
+        # };
 
         extraCompatPackages = with pkgs; [
-          freetype
-          libdecor
-          gamescope-wsi
           proton-ge-bin
-          vkd3d
-          vkd3d-proton
-          vulkan-loader
-          wineWowPackages.waylandFull
+          # freetype
+          # gamescope-wsi
+          # vkd3d
+          # vkd3d-proton
+          # vulkan-loader
+          # wineWowPackages.waylandFull
         ];
 
         gamescopeSession.enable = cfg.gamescope;
