@@ -103,7 +103,11 @@
       inherit (self.checks.pre-commit-check) shellHook;
       buildInputs = self.checks.pre-commit-check.enabledPackages;
 
-      packages = with pkgs; [
+      packages = with pkgs; let
+        nh-update = pkgs.callPackage ./packages/nh-update {};
+      in [
+        # scripts
+        nh-update
         # tools
         just
         yq
