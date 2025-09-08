@@ -7,16 +7,6 @@ DOTFILE_REPO="$HOME/dotfiles"
 NIXOS_REPO="$HOME/Projects/nixos-hosts"
 CACHE_HOSTNAME=nix-cache.cthyllaxy.xyz
 
-_check_cache() {
-    # check if running the command where
-    # private cache is available
-    if ping -c 1 -W 1 "$CACHE_HOSTNAME" >/dev/null 2>&1; then
-        return 0
-    fi
-
-    return 1
-}
-
 # @cmd Update home-manager
 # @alias hm
 home() {
@@ -25,14 +15,22 @@ home() {
         --backup-extension .bak
 
     argc_mode="home"
-    cache
 }
 
 # @cmd Update nixos host
 os() {
     nh os switch "$NIXOS_REPO" \
         --ask
-    cache
+}
+
+_check_cache() {
+    # check if running the command where
+    # private cache is available
+    if ping -c 1 -W 1 "$CACHE_HOSTNAME" >/dev/null 2>&1; then
+        return 0
+    fi
+
+    return 1
 }
 
 # @cmd Check cache
