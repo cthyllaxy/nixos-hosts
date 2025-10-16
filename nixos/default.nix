@@ -5,13 +5,13 @@
     ./localization.nix
     ./networking.nix
     ./nix.nix
+    ./programs
     ./security.nix
     ./services.nix
     ./sops.nix
     ./system-packages.nix
     ./user.nix
     ./virtualization.nix
-    ./programs
   ];
 
   # set zsh as default shell

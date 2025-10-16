@@ -30,6 +30,10 @@
         inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
 
+    river.enable = true;
+
+    niri.enable = true;
+
     nix-ld.enable = true;
   };
 }
