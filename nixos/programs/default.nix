@@ -6,17 +6,7 @@
   imports = [./steam.nix];
 
   programs = {
-    nh = {
-      enable = true;
-      clean.enable = true;
-      clean.extraArgs = "--keep-since 7d --keep 5";
-    };
-
     dconf.enable = true;
-
-    sway.enable = false;
-
-    zsh.enable = true;
 
     gnupg.agent = {
       enable = true;
@@ -30,10 +20,22 @@
         inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
 
-    river.enable = true;
+    nh = {
+      enable = true;
+      clean.enable = true;
+      clean.extraArgs = "--keep-since 7d --keep 5";
+    };
 
     niri.enable = true;
 
     nix-ld.enable = true;
+
+    river.enable = true;
+
+    sway.enable = false;
+
+    xwayland.enable = true;
+
+    zsh.enable = true;
   };
 }

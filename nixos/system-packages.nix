@@ -38,6 +38,7 @@
     # ventoy
     vlc
     xfce.thunar
+    xwayland-satellite
     # xwaylandvideobridge
     # yubikey-manager
 
