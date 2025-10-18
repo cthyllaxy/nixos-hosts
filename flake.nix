@@ -1,17 +1,6 @@
 {
   description = "Cthyllaxy NixOS Hosts";
 
-  nixConfig = {
-    extra-substituters = [
-      "https://nix-cache.cthyllaxy.xyz"
-      "https://nix-community.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "nix-cache.cthyllaxy.xyz:7HvsbxYbrNLOT8h5cAtZ08lsAJK6kh0+/JJ9jCZ3j84="
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    ];
-  };
-
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     home-manager = {
