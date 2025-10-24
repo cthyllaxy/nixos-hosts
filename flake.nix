@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -61,6 +62,7 @@
         inputs.disko.nixosModules.disko
         inputs.home-manager.nixosModules.home-manager
         inputs.sops-nix.nixosModules.sops
+        inputs.determinate.nixosModules.default
         hmPkgsConfig
         ./nixos
         ./hosts/${hostName}/configuration.nix
