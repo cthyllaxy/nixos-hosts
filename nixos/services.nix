@@ -37,7 +37,6 @@
 
     desktopManager = {
       gnome.enable = false;
-      cosmic.enable = true;
     };
 
     # Firmware updater
