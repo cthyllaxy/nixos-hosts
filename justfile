@@ -23,6 +23,8 @@ remote-install HOSTNAME USER IP:
 get-age-key-from-bw:
     mkdir -p {{ home_dir() }}/.config/sops/age
     bw get attachment keys.txt  --itemid "2da195b6-61cb-4ecb-a455-b1e5018476a2" --output "{{ home_dir() }}/.config/sops/age/keys.txt"
+    sudo mkdir -p /sops/age
+    sudo cp "{{ home_dir() }}/.config/sops/age/keys.txt" /sops/age/keys.txt
 
 # Restore host SSH key that is stored in the repo
 restore-ssh-key host=`hostname` user=`whoami` key="id_ed25519":

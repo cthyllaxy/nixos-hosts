@@ -95,6 +95,7 @@
         # scripts
         nh-update
         # tools
+        bitwarden-cli
         just
         yq
         nixpkgs-fmt
