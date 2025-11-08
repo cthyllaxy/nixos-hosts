@@ -33,7 +33,7 @@
       ly = {
         enable = true;
         settings = {
-          animation = "gameoflife";
+          animation = "colormix";
         };
       };
     };
