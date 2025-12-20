@@ -15,6 +15,7 @@
         "nmeusling"
       ];
       warn-dirty = false;
+      fallback = true;
       substituters = [
         "https://nix-cache.cthyllaxy.xyz"
         "https://nix-community.cachix.org"
@@ -26,6 +27,5 @@
         "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
       ];
     };
-    # optimise.automatic = true;
   };
 }
