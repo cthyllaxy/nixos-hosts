@@ -4,25 +4,11 @@
     ./disko-config.nix
   ];
 
+  hardware.system76.enableAll = true;
+
   environment.systemPackages = with pkgs; [
     system76-firmware
   ];
-
-  # laptop battery optimization
-  programs.auto-cpufreq = {
-    enable = false;
-    settings = {
-      charger = {
-        governor = "performance";
-        turbo = "auto";
-      };
-
-      battery = {
-        governor = "powersave";
-        turbo = "auto";
-      };
-    };
-  };
 
   services.xserver.videoDrivers = ["amdgpu"];
 
