@@ -11,10 +11,10 @@
     lf
     neovim
     nh
+    nh-update
     pulseaudio
     unixtools.xxd
     wget
-    nh-update
 
     # programming
     git
@@ -31,13 +31,12 @@
     easyeffects
     evince
     pwvucontrol
-    signal-desktop-bin
+    signal-desktop
     simple-scan
     # slack
     spotify
     # ventoy
     vlc
-    xfce.thunar
     xwayland-satellite
     # xwaylandvideobridge
     # yubikey-manager
