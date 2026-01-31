@@ -1,5 +1,7 @@
 {
-  imports = [./steam.nix];
+  imports = [
+    ./steam.nix
+  ];
 
   programs = {
     dconf.enable = true;

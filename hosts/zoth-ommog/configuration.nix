@@ -8,8 +8,9 @@
   environment.systemPackages = with pkgs; [
     amdgpu_top
     discord
-    gparted
     dualsensectl
+    gparted
+    lutris
   ];
 
   hardware = {
