@@ -1,5 +1,13 @@
 {pkgs, ...}: {
   hardware = {
+    bluetooth = {
+      enable = true;
+      package = pkgs.bluez5-experimental;
+      settings = {
+        Policy.AutoEnable = "true";
+        General.Enable = "Source,Sink,Media,Socket";
+      };
+    };
     # enable opengl
     graphics = {
       enable = true;
