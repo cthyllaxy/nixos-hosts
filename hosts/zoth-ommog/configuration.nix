@@ -13,20 +13,6 @@
     lutris
   ];
 
-  hardware = {
-    bluetooth = {
-      enable = true;
-      package = pkgs.bluez5-experimental;
-      settings = {
-        Policy.AutoEnable = "true";
-        General.Enable = "Source,Sink,Media,Socket";
-      };
-    };
-    # xbox one controller
-    # https://github.com/atar-axis/xpadneo
-    xpadneo.enable = false;
-  };
-
   services = {
     # bluetooth config
     blueman.enable = true;
