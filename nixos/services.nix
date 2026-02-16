@@ -1,6 +1,6 @@
 {
   services = {
-    power-profiles-daemon.enable = false;
+    upower.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
