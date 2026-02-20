@@ -1,12 +1,14 @@
 {
   services = {
     upower.enable = true;
+
     pipewire = {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
     };
+
     # Enable CUPS to print documents.
     printing.enable = true;
     avahi = {
@@ -44,5 +46,7 @@
 
     # Firmware updater
     fwupd.enable = true;
+
+    tailscale.enable = true;
   };
 }
