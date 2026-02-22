@@ -30,16 +30,15 @@
     calibre
     easyeffects
     evince
+    gscan2pdf
     pwvucontrol
     signal-desktop
     simple-scan
-    # slack
     spotify
-    # ventoy
     vlc
     xwayland-satellite
-    # xwaylandvideobridge
-    # yubikey-manager
+    # slack
+    # ventoy
 
     # browser
     firefox
