@@ -30,6 +30,7 @@
     calibre
     easyeffects
     evince
+    google-chrome
     gscan2pdf
     pwvucontrol
     signal-desktop
