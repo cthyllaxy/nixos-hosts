@@ -27,7 +27,7 @@
 
     # apps
     arandr
-    calibre
+    # calibre
     easyeffects
     evince
     google-chrome
