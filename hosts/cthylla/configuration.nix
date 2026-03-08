@@ -1,10 +1,7 @@
-{pkgs, ...}: {
+{
   imports = [
     ./hardware-configuration.nix
   ];
-
-  # host-specific
-  environment.systemPackages = with pkgs; [gparted];
 
   # my nixos modules
   nixosModules = {

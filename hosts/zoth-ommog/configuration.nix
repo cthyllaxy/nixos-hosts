@@ -9,7 +9,6 @@
     amdgpu_top
     discord
     dualsensectl
-    gparted
     lutris
   ];
 
