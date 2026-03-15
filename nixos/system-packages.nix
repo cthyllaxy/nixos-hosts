@@ -1,7 +1,5 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; let
-    nh-update = pkgs.callPackage ../packages/nh-update {};
-  in [
+  environment.systemPackages = with pkgs; [
     # tools/cli
     # bitwarden-cli
     curl
@@ -11,7 +9,6 @@
     lf
     neovim
     nh
-    nh-update
     pulseaudio
     unixtools.xxd
     wget
@@ -31,7 +28,7 @@
     easyeffects
     evince
     gnome-disk-utility
-    google-chrome
+    # google-chrome
     gscan2pdf
     pwvucontrol
     signal-desktop
