@@ -92,11 +92,7 @@
       inherit (self.checks.pre-commit-check) shellHook;
       buildInputs = self.checks.pre-commit-check.enabledPackages;
 
-      packages = with pkgs; let
-        nh-update = pkgs.callPackage ./packages/nh-update {};
-      in [
-        # scripts
-        nh-update
+      packages = with pkgs; [
         # tools
         bitwarden-cli
         just
