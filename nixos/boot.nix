@@ -4,6 +4,6 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    kernelPackages = pkgs.linuxPackages_6_19;
+    kernelPackages = pkgs.linuxPackages_7_0;
   };
 }
