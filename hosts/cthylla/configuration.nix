@@ -20,6 +20,12 @@
   # Disable ly display manager (Jovian uses its own session management)
   services.displayManager.ly.enable = lib.mkForce false;
 
+  # Enable SDDM (required for Plasma session registration)
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
+
   # Enable KDE Plasma 6 desktop (minimal)
   services.desktopManager.plasma6.enable = true;
 
@@ -28,6 +34,11 @@
 
   # Desktop Steam (available when in Plasma desktop mode)
   programs.steam.enable = true;
+
+  # Ensure /steam is owned by nmeusling
+  systemd.tmpfiles.rules = [
+    "d /steam 0755 nmeusling users -"
+  ];
 
   # User configuration
   nixosModules.users.usernames = ["nmeusling"];
