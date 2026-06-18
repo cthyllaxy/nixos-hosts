@@ -1,6 +1,7 @@
 {
   inputs,
   lib,
+  pkgs,
   ...
 }: {
   imports = [
@@ -20,13 +21,10 @@
   # Disable ly display manager (Jovian uses its own session management)
   services.displayManager.ly.enable = lib.mkForce false;
 
-  # Enable SDDM (required for Plasma session registration)
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
+  # NOTE: SDDM is intentionally disabled - it conflicts with jovian.steam.autoStart
+  # Jovian handles session switching internally via steamos-manager
 
-  # Enable KDE Plasma 6 desktop (minimal)
+  # Enable KDE Plasma 6 desktop (provides session files for desktopSession = "plasma")
   services.desktopManager.plasma6.enable = true;
 
   # Disable niri for this host (enabled globally)
@@ -35,9 +33,21 @@
   # Desktop Steam (available when in Plasma desktop mode)
   programs.steam.enable = true;
 
-  # Ensure /steam is owned by nmeusling
+  # Lutris and Wine dependencies for non-Steam games
+  environment.systemPackages = with pkgs; [
+    lutris
+    wineWow64Packages.stagingFull # Wine with staging patches (32 & 64-bit)
+    winetricks # Helper for installing Windows components
+  ];
+
+  # Ensure /steam directory structure for Steam game library
+  # Steam will recognize this structure when you add it via Settings > Storage
   systemd.tmpfiles.rules = [
     "d /steam 0755 nmeusling users -"
+    "d /steam/steamapps 0755 nmeusling users -"
+    "d /steam/steamapps/common 0755 nmeusling users -"
+    "d /steam/steamapps/downloading 0755 nmeusling users -"
+    "d /steam/steamapps/temp 0755 nmeusling users -"
   ];
 
   # User configuration
