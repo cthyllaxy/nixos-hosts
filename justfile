@@ -1,4 +1,8 @@
+_default:
+    @just --list
+
 # New install on a remote machine
+[group("nixos")]
 remote-install HOSTNAME USER IP:
     #!/usr/bin/env bash
     set -e
@@ -19,7 +23,16 @@ remote-install HOSTNAME USER IP:
         --extra-files "$temp" \
         {{ USER }}@{{ IP }}
 
+# Update an existing remote machine
+[group("nixos")]
+remote-update HOSTNAME USER IP:
+    @nh os boot .#{{ HOSTNAME }} \
+        --target-host {{ USER }}@{{ IP }} \
+        --build-host {{ USER }}@{{ IP }} \
+        --ask
+
 # Get Age key from Bitwarden
+[group("secrets")]
 get-age-key-from-bw:
     mkdir -p {{ home_dir() }}/.config/sops/age
     bw get attachment keys.txt  --itemid "2da195b6-61cb-4ecb-a455-b1e5018476a2" --output "{{ home_dir() }}/.config/sops/age/keys.txt"
@@ -27,6 +40,7 @@ get-age-key-from-bw:
     sudo cp "{{ home_dir() }}/.config/sops/age/keys.txt" /sops/age/keys.txt
 
 # Restore host SSH key that is stored in the repo
+[group("secrets")]
 restore-ssh-key host=`hostname` user=`whoami` key="id_ed25519":
     #!/usr/bin/env bash
     set -e
