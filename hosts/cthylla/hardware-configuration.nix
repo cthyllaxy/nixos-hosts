@@ -11,10 +11,21 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
-  boot.initrd.kernelModules = [];
+  boot.initrd.availableKernelModules = [
+    "nvme"
+    "xhci_pci"
+    "ahci"
+    "usb_storage"
+    "usbhid"
+    "sd_mod"
+  ];
+  boot.initrd.kernelModules = [
+    "amdgpu"
+  ];
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
+
+  hardware.enableAllFirmware = true;
 
   # Filesystems and swap are managed by disko (see disko-config.nix)
 

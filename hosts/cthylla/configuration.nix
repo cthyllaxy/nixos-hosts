@@ -11,12 +11,18 @@
   ];
 
   # Jovian NixOS - Steam Deck UI experience
-  jovian.steam = {
-    enable = true;
-    autoStart = true;
-    user = "nmeusling";
-    desktopSession = "plasma";
+  jovian = {
+    steam = {
+      enable = true;
+      autoStart = true;
+      user = "nmeusling";
+      desktopSession = "plasma";
+    };
+
+    hardware.has.amd.gpu = true;
   };
+
+  services.xserver.videoDrivers = ["amdgpu"];
 
   # Disable ly display manager (Jovian uses its own session management)
   services.displayManager.ly.enable = lib.mkForce false;
@@ -35,6 +41,7 @@
 
   # Lutris and Wine dependencies for non-Steam games
   environment.systemPackages = with pkgs; [
+    amdgpu_top
     heroic
     lutris
     wineWow64Packages.stagingFull # Wine with staging patches (32 & 64-bit)
