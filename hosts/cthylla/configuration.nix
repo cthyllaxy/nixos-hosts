@@ -42,6 +42,7 @@
   # Lutris and Wine dependencies for non-Steam games
   environment.systemPackages = with pkgs; [
     amdgpu_top
+    curseforge
     heroic
     lutris
     wineWow64Packages.stagingFull # Wine with staging patches (32 & 64-bit)

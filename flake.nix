@@ -40,6 +40,9 @@
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
+      overlays = [
+        (import ./pkgs)
+      ];
     };
 
     hmPkgsConfig = {
@@ -71,6 +74,8 @@
         inputs.sops-nix.nixosModules.sops
         inputs.determinate.nixosModules.default
         hmPkgsConfig
+        # Apply custom packages overlay
+        {nixpkgs.overlays = [(import ./pkgs)];}
         ./nixos
         ./hosts/${hostName}/configuration.nix
       ];
