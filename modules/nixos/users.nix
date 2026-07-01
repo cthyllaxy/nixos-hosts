@@ -1,9 +1,8 @@
 # modules/nixos/users.nix
 #
 # Note: `flake.nixosModules.users` (below) is the flake-parts OUTPUT key.
-# The `nixosModules.users` inside the module body is a separate, NixOS-level
-# custom option namespace (config scope) consumed by the host modules. The two
-# do not collide — they live in different module systems.
+# The `cthyllaxy.users` inside the module body is our own NixOS-level option
+# namespace (config scope) consumed by the host modules.
 {...}: {
   flake.nixosModules.users = {
     pkgs,
@@ -11,7 +10,7 @@
     lib,
     ...
   }: let
-    cfg = config.nixosModules.users;
+    cfg = config.cthyllaxy.users;
 
     mkUser = username: {
       isNormalUser = true;
@@ -25,7 +24,7 @@
       ];
     };
   in {
-    options.nixosModules.users = {
+    options.cthyllaxy.users = {
       usernames = lib.mkOption {
         type = lib.types.listOf lib.types.str;
         description = "list of usernames to be created";

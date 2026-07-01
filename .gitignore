@@ -5,6 +5,10 @@ Pipfile*
 *.log
 .direnv
 
+# nix build symlinks
+result
+result-*
+
 # Hyper stuff
 Hyper/blob_storage
 Hyper/Cache

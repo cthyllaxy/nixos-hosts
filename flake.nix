@@ -1,6 +1,19 @@
 {
   description = "Cthyllaxy NixOS Hosts";
 
+  nixConfig = {
+    extra-substituters = [
+      "https://nix-cache.cthyllaxy.xyz"
+      "https://nix-community.cachix.org"
+      "https://niri.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-cache.cthyllaxy.xyz:CEJYeiGUveq4GMALY2GHhcIwrr5PwYwdUj6skoHmBH8="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
@@ -9,10 +22,6 @@
     import-tree.url = "github:denful/import-tree";
 
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
-    auto-cpufreq = {
-      url = "github:AdnanHodzic/auto-cpufreq";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -1,9 +1,10 @@
 # modules/nixos/hosts/zoth-ommog/default.nix
-{...}: {
+{self, ...}: {
   flake.nixosModules."hosts/zoth-ommog" = {pkgs, ...}: {
     imports = [
       ./_hardware-configuration.nix
       ./_disko-config.nix
+      self.nixosModules."hardware/amd-gpu"
     ];
 
     # host-specific packages
@@ -33,10 +34,8 @@
       '';
     };
 
-    services.xserver.videoDrivers = ["amdgpu"];
-
-    # nixos modules
-    nixosModules = {
+    # custom modules
+    cthyllaxy = {
       users.usernames = ["thamenato"];
       steam = {
         enable = true;

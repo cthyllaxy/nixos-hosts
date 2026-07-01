@@ -23,10 +23,5 @@
     # Allow unfree packages + custom packages overlay
     nixpkgs.config.allowUnfree = true;
     nixpkgs.overlays = [(import ../../pkgs)];
-
-    system.autoUpgrade = {
-      enable = true;
-      allowReboot = false;
-    };
   };
 }

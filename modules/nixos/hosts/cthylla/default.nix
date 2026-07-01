@@ -1,5 +1,5 @@
 # modules/nixos/hosts/cthylla/default.nix
-{...}: {
+{self, ...}: {
   flake.nixosModules."hosts/cthylla" = {
     inputs,
     lib,
@@ -10,6 +10,7 @@
       ./_hardware-configuration.nix
       ./_disko-config.nix
       inputs.jovian.nixosModules.default
+      self.nixosModules."hardware/amd-gpu"
     ];
 
     # Jovian NixOS - Steam Deck UI experience
@@ -21,13 +22,13 @@
         # SteamOS compositor. Re-enable once Proton is ruled in/out.
         autoStart = false;
         user = "nmeusling";
-        desktopSession = "plasma";
+        # desktopSession has no effect while autoStart = false; SDDM + plasma6
+        # already land on Plasma. Re-add `desktopSession = "plasma";` if
+        # autoStart is turned back on.
       };
 
       hardware.has.amd.gpu = true;
     };
-
-    services.xserver.videoDrivers = ["amdgpu"];
 
     # Disable ly display manager (Jovian uses its own session management)
     services.displayManager.ly.enable = lib.mkForce false;
@@ -50,7 +51,7 @@
     # Desktop Steam via the shared module: brings proton-ge-bin + gamemode
     # (matches zoth-ommog). gamescope is left off so the desktop-mode test
     # doesn't stack a second gamescope session on top of Jovian's.
-    nixosModules.steam = {
+    cthyllaxy.steam = {
       enable = true;
       gamescope = false;
     };
@@ -76,7 +77,7 @@
     ];
 
     # User configuration
-    nixosModules.users.usernames = ["nmeusling"];
+    cthyllaxy.users.usernames = ["nmeusling"];
 
     system.stateVersion = "25.05";
   };

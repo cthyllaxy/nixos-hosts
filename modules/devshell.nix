@@ -29,8 +29,8 @@
         # tools
         bitwarden-cli
         just
-        yq
-        nixpkgs-fmt
+        yq-go
+        alejandra
         sops
         # language server
         yaml-language-server

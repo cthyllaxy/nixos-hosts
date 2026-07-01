@@ -5,22 +5,18 @@
   inputs,
   ...
 }: let
-  mkHost = {
-    hostName,
-    user ? "thamenato",
-  }:
+  mkHost = {hostName}:
     inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
       specialArgs = {
         inherit inputs;
         meta = {
-          inherit hostName user;
+          inherit hostName;
         };
       };
 
       modules = [
-        inputs.auto-cpufreq.nixosModules.default
         inputs.disko.nixosModules.disko
         inputs.sops-nix.nixosModules.sops
         inputs.determinate.nixosModules.default

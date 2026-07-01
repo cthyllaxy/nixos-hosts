@@ -6,8 +6,8 @@
       ./_disko-config.nix
     ];
 
-    # my nixos modules
-    nixosModules = {
+    # custom modules
+    cthyllaxy = {
       users.usernames = ["thamenato"];
       steam.enable = true;
     };

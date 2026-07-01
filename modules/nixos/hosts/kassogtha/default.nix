@@ -1,9 +1,10 @@
 # modules/nixos/hosts/kassogtha/default.nix
-{...}: {
+{self, ...}: {
   flake.nixosModules."hosts/kassogtha" = {pkgs, ...}: {
     imports = [
       ./_hardware-configuration.nix
       ./_disko-config.nix
+      self.nixosModules."hardware/amd-gpu"
     ];
 
     hardware.system76.enableAll = true;
@@ -12,10 +13,8 @@
       system76-firmware
     ];
 
-    services.xserver.videoDrivers = ["amdgpu"];
-
-    # nixos modules
-    nixosModules = {
+    # custom modules
+    cthyllaxy = {
       users.usernames = ["thamenato" "nmeusling"];
       steam.enable = true;
     };

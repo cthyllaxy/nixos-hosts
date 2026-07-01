@@ -1,25 +1,5 @@
 {
   "nodes": {
-    "auto-cpufreq": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1780814819,
-        "narHash": "sha256-tCqZRB4pvZlcz2cMi7mfvhFRsfdkbFMP67jGNciogmc=",
-        "owner": "AdnanHodzic",
-        "repo": "auto-cpufreq",
-        "rev": "f325b2a221ab9adb5bb729a1e5d7a45aea686382",
-        "type": "github"
-      },
-      "original": {
-        "owner": "AdnanHodzic",
-        "repo": "auto-cpufreq",
-        "type": "github"
-      }
-    },
     "determinate": {
       "inputs": {
         "determinate-nixd-aarch64-darwin": "determinate-nixd-aarch64-darwin",
@@ -409,7 +389,6 @@
     },
     "root": {
       "inputs": {
-        "auto-cpufreq": "auto-cpufreq",
         "determinate": "determinate",
         "disko": "disko",
         "flake-parts": "flake-parts_2",

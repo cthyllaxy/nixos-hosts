@@ -18,8 +18,6 @@
         extraPackages = with pkgs; [
           # amdvlk
           vulkan-loader
-          vulkan-validation-layers
-          vulkan-extension-layer
         ];
       };
 

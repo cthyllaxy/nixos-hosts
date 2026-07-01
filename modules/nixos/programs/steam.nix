@@ -1,8 +1,8 @@
 # modules/nixos/programs/steam.nix
 #
 # Note: `flake.nixosModules."programs/steam"` is the flake-parts OUTPUT key.
-# The `nixosModules.steam` inside the module body is a separate, NixOS-level
-# custom option namespace consumed by the host modules.
+# The `cthyllaxy.steam` inside the module body is our own NixOS-level option
+# namespace consumed by the host modules.
 {...}: {
   flake.nixosModules."programs/steam" = {
     pkgs,
@@ -10,9 +10,9 @@
     config,
     ...
   }: let
-    cfg = config.nixosModules.steam;
+    cfg = config.cthyllaxy.steam;
   in {
-    options.nixosModules.steam = {
+    options.cthyllaxy.steam = {
       enable = lib.mkEnableOption "Enable Steam";
       gamescope = lib.mkEnableOption "Enable Gamescope";
       gamescopeArgs = lib.mkOption {
