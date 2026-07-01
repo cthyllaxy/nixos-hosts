@@ -19,7 +19,7 @@ remote-install HOSTNAME USER IP:
     chmod 600 "$temp/sops/age/keys.txt"
 
     nix run github:nix-community/nixos-anywhere -- --flake ".#{{ HOSTNAME }}" \
-        --generate-hardware-config nixos-generate-config ./hosts/{{ HOSTNAME }}/hardware-configuration.nix \
+        --generate-hardware-config nixos-generate-config ./modules/nixos/hosts/{{ HOSTNAME }}/_hardware-configuration.nix \
         --extra-files "$temp" \
         {{ USER }}@{{ IP }}
 

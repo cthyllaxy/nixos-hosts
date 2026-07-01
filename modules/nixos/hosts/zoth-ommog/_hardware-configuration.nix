@@ -25,22 +25,8 @@
 
   hardware.enableAllFirmware = true;
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/c83b037d-df9f-4053-a9b4-c456837a45ea";
-    fsType = "ext4";
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/F5B1-7E49";
-    fsType = "vfat";
-  };
-
-  fileSystems."/data" = {
-    device = "/dev/disk/by-uuid/922c8c6b-1992-4a2b-9cb1-470482f85cdc";
-    fsType = "ext4";
-  };
-
-  swapDevices = [{device = "/dev/disk/by-uuid/ff2ad39e-d086-4565-be36-0494b9714973";}];
+  # Filesystems and swap are declared by disko (see _disko-config.nix), so they
+  # are intentionally omitted here to avoid conflicting definitions.
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
