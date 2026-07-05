@@ -19,7 +19,6 @@
       modules = [
         inputs.disko.nixosModules.disko
         inputs.sops-nix.nixosModules.sops
-        inputs.determinate.nixosModules.default
 
         # Base configuration (shared by all hosts)
         self.nixosModules.base

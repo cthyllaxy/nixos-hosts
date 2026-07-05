@@ -16,6 +16,7 @@
       isNormalUser = true;
       description = "${username}";
       hashedPasswordFile = config.sops.secrets.${username}.path;
+      initialPassword = "fantasma"; # Temporary fallback for fresh installs
       extraGroups = [
         "networkmanager"
         "wheel"

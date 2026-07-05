@@ -26,15 +26,14 @@
       buildInputs = self'.checks.pre-commit-check.enabledPackages;
 
       packages = with pkgs; [
-        # tools
+        alejandra
         bitwarden-cli
         just
-        yq-go
-        alejandra
-        sops
-        # language server
-        yaml-language-server
+        nh
         nil
+        sops
+        yaml-language-server
+        yq-go
       ];
     };
   };

@@ -31,6 +31,28 @@ remote-update HOSTNAME USER IP:
         --build-host {{ USER }}@{{ IP }} \
         --ask
 
+[group("nixos")]
+remote-install-no-internet HOSTNAME USER IP:
+    #!/usr/bin/env bash
+    set -e
+
+    temp=$(mktemp -d)
+
+    cleanup() {
+        rm -rf "$temp"
+    }
+    trap cleanup EXIT
+
+    install -d -m755 "$temp/sops/age"
+    cp {{ home_dir() }}/.config/sops/age/keys.txt "$temp/sops/age/keys.txt"
+    chmod 600 "$temp/sops/age/keys.txt"
+
+    rsync -avz \
+        --exclude='.direnv' \
+        --exclude='result' \
+        $PWD "{{ USER }}@{{ IP }}":/tmp
+
+
 # Get Age key from Bitwarden
 [group("secrets")]
 get-age-key-from-bw:
