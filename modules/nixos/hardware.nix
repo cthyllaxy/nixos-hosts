@@ -18,6 +18,7 @@
         extraPackages = with pkgs; [
           # amdvlk
           vulkan-loader
+          vulkan-tools # provides vulkaninfo, vkcube, etc.
         ];
       };
 
