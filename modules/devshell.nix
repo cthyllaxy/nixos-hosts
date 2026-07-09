@@ -7,8 +7,9 @@
     self',
     ...
   }: {
-    checks.pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+    checks.pre-commit-check = inputs.git-hooks.lib.${system}.run {
       src = inputs.self;
+      package = pkgs.prek;
       hooks = {
         check-added-large-files.enable = true;
         check-yaml.enable = true;
