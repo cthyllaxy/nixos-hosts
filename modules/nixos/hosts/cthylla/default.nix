@@ -80,7 +80,7 @@
     cthyllaxy.users.usernames = ["nmeusling"];
 
     # Forces using latest longterm version
-    boot.kernelPackages = lib.mkForce pkgs.linuxPackages;
+    boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_18;
 
     system.stateVersion = "25.05";
   };

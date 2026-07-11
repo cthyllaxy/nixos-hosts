@@ -25,8 +25,6 @@
       rofi
 
       # apps
-      arandr
-      # calibre
       easyeffects
       evince
       gnome-disk-utility
