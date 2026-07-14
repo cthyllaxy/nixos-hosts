@@ -10,6 +10,7 @@
     hardware.system76.enableAll = true;
 
     environment.systemPackages = with pkgs; [
+      curseforge
       system76-firmware
     ];
 
