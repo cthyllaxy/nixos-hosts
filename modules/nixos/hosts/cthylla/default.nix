@@ -13,19 +13,17 @@
       self.nixosModules."hardware/amd-gpu"
     ];
 
-    # Jovian NixOS - Steam Deck UI experience
+    # Jovian NixOS - Steam Deck UI experience for desktop gaming PC
     jovian = {
       steam = {
         enable = true;
-        # A/B test: boot into the Plasma desktop instead of Steam Game Mode
-        # (nested gamescope) so Diablo 4 / Battle.net can be tested outside the
-        # SteamOS compositor. Re-enable once Proton is ruled in/out.
-        autoStart = false;
+        autoStart = true;
         user = "nmeusling";
-        # desktopSession has no effect while autoStart = false; SDDM + plasma6
-        # already land on Plasma. Re-add `desktopSession = "plasma";` if
-        # autoStart is turned back on.
+        desktopSession = "plasma";
       };
+
+      # Explicitly disable Steam Deck hardware-specific configs
+      devices.steamdeck.enable = false;
 
       hardware.has.amd.gpu = true;
     };
@@ -33,28 +31,11 @@
     # Disable ly display manager (Jovian uses its own session management)
     services.displayManager.ly.enable = lib.mkForce false;
 
-    # With autoStart = false there is no Jovian session manager, so use SDDM to
-    # reach the Plasma desktop. SDDM also populates the session data that
-    # Jovian's `desktopSession` check requires. (SDDM only conflicts with
-    # jovian.steam.autoStart = true.)
-    services.displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-    };
-
-    # Enable KDE Plasma 6 desktop (provides session files for desktopSession = "plasma")
+    # Enable KDE Plasma 6 desktop for desktop mode (Switch to Desktop in Steam UI)
     services.desktopManager.plasma6.enable = true;
 
     # Disable niri for this host (enabled globally)
     programs.niri.enable = lib.mkForce false;
-
-    # Desktop Steam via the shared module: brings proton-ge-bin + gamemode
-    # (matches zoth-ommog). gamescope is left off so the desktop-mode test
-    # doesn't stack a second gamescope session on top of Jovian's.
-    cthyllaxy.steam = {
-      enable = true;
-      gamescope = false;
-    };
 
     # Lutris and Wine dependencies for non-Steam games
     environment.systemPackages = with pkgs; [
@@ -78,9 +59,6 @@
 
     # User configuration
     cthyllaxy.users.usernames = ["nmeusling"];
-
-    # Forces using latest longterm version
-    boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_18;
 
     system.stateVersion = "25.05";
   };
