@@ -55,6 +55,23 @@
           };
         };
       };
+      data = {
+        device = "/dev/disk/by-id/nvme-Samsung_SSD_980_500GB_S64ENG0R603529F";
+        type = "disk";
+        content = {
+          type = "gpt";
+          partitions = {
+            root = {
+              size = "100%";
+              content = {
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/data";
+              };
+            };
+          };
+        };
+      };
     };
   };
 }
