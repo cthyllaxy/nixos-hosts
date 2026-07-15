@@ -20,6 +20,8 @@
       steam.enable = true;
     };
 
+    services.desktopManager.plasma6.enable = true;
+
     system.stateVersion = "23.11";
   };
 }
