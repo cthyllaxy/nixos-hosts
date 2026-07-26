@@ -15,7 +15,7 @@
 
   src = fetchurl {
     url = "https://curseforge.overwolf.com/downloads/curseforge-latest-linux.AppImage";
-    sha256 = "1j9m0qm5rpnznyns7pkdrqij6w0s6xb14labbvp5jxxn3kdcp3fj";
+    sha256 = "1m1rfq90xhiznm97qi5f58p1x7sx29hiywvzpkr4zn4c8vlfmhm1";
   };
 
   desktopItem = makeDesktopItem {

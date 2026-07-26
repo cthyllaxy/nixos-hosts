@@ -1,5 +1,9 @@
 # modules/nixos/hosts/kassogtha/default.nix
-{self, ...}: {
+{
+  self,
+  lib,
+  ...
+}: {
   flake.nixosModules."hosts/kassogtha" = {pkgs, ...}: {
     imports = [
       ./_hardware-configuration.nix
@@ -20,7 +24,11 @@
       steam.enable = true;
     };
 
-    services.desktopManager.plasma6.enable = true;
+    services = {
+      desktopManager = {
+        gnome.enable = lib.mkForce true;
+      };
+    };
 
     system.stateVersion = "23.11";
   };
