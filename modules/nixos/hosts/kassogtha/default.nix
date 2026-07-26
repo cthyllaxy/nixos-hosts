@@ -14,7 +14,7 @@
     hardware.system76.enableAll = true;
 
     environment.systemPackages = with pkgs; [
-      curseforge
+      wowup-cf
       system76-firmware
     ];
 

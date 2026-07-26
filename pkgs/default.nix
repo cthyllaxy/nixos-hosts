@@ -1,4 +1,4 @@
 # Overlay for custom packages
-final: _: {
-  curseforge = final.callPackage ./curseforge {};
+_: _: {
+  # custom-pkg = final.callPackage ./custom-pkg {};
 }
