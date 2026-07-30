@@ -25,8 +25,8 @@ remote-install HOSTNAME USER IP:
 
 # Update an existing remote machine
 [group("nixos")]
-remote-update HOSTNAME USER IP:
-    @nh os boot .#{{ HOSTNAME }} \
+remote-update HOSTNAME USER IP MODE:
+    @nh os {{ MODE }} .#{{ HOSTNAME }} \
         --target-host {{ USER }}@{{ IP }} \
         --build-host {{ USER }}@{{ IP }} \
         --ask

@@ -47,6 +47,11 @@
       wowup-cf
     ];
 
+    # Enable AppImage
+    programs.appimage = {
+      enable = true;
+    };
+
     # Ensure /steam directory structure for Steam game library
     # Steam will recognize this structure when you add it via Settings > Storage
     systemd.tmpfiles.rules = [
