@@ -4,6 +4,7 @@
     environment.systemPackages = with pkgs; [
       # tools/cli
       # bitwarden-cli
+      bitwarden-desktop
       curl
       dig
       gnupg

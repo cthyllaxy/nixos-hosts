@@ -44,7 +44,7 @@
       lutris
       wineWow64Packages.stagingFull # Wine with staging patches (32 & 64-bit)
       winetricks # Helper for installing Windows components
-      wowup-cf
+      xivlauncher
     ];
 
     # Enable AppImage
